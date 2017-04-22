@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upload CSV File</title>
+</head>
+
+<body style="background:#dedede;">
+    <header style="text-align: center; border-bottom: 1px solid #f0f0f0; padding: 15px;">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            Please Select File:
+            <input type="file" name="csvfile" value="csvfile">
+            <input type="submit" value="Upload" />
+        </form>
+    </header>
+    <content>
+        <div style="min-height: 480px; background:#FFF;">
+            <table border="1">
+            {% for data in reader %}
+                <tr>
+                    {% for td in data %}
+                        <td>{{td|safe}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </content>
+    
+</body>
+
+</html>
